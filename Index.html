@@ -1,0 +1,393 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#071525">
+<meta name="description" content="AFRICATEC-DROID - Sports, football, entertainment, music and trending stories.">
+<title>AFRICATEC-DROID | Sports & Entertainment</title>
+<style>
+:root{
+ --bg:#071525;
+ --card:#11263c;
+ --text:#f5f9ff;
+ --muted:#a6b9ce;
+ --accent:#00e69a;
+ --border:#294158;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+ margin:0;background:var(--bg);color:var(--text);
+ font-family:Arial,Helvetica,sans-serif;
+ line-height:1.6;
+}
+body.light{
+ --bg:#f2f6fb;--card:#fff;--text:#14263b;
+ --muted:#52667a;--border:#d6e1eb;
+}
+a{text-decoration:none;color:inherit}
+button,input{font:inherit}
+header{
+ position:sticky;top:0;z-index:10;
+ background:var(--bg);border-bottom:1px solid var(--border);
+ padding:13px 5%;
+ display:flex;align-items:center;
+ justify-content:space-between;gap:12px;
+}
+.logo{font-weight:900;font-size:19px;letter-spacing:.5px}
+.logo span{color:var(--accent)}
+nav{display:flex;gap:16px;flex-wrap:wrap}
+nav a{font-size:13px;font-weight:bold}
+nav a:hover{color:var(--accent)}
+button{
+ border:0;border-radius:9px;cursor:pointer;
+ padding:10px 14px;font-weight:bold;
+}
+.theme{background:var(--card);color:var(--text)}
+.hero{
+ padding:65px 5%;text-align:center;
+ background:radial-gradient(ellipse at top,#164a5c,var(--bg) 75%);
+}
+.hero h1{
+ font-size:clamp(32px,7vw,65px);
+ line-height:1.12;margin:0 0 16px;
+ animation:rise .7s ease-out;
+}
+.hero h1 span{color:var(--accent)}
+.hero p{color:var(--muted);max-width:620px;margin:0 auto 24px}
+.btn{
+ display:inline-block;background:var(--accent);
+ color:#06221b;padding:13px 22px;border-radius:10px;
+ font-weight:800;margin:5px;
+}
+.btn.outline{
+ background:transparent;color:var(--text);
+ border:1px solid var(--accent);
+}
+.search{
+ display:flex;max-width:600px;margin:25px auto 0;
+ gap:8px;
+}
+.search input{
+ flex:1;min-width:0;border:1px solid var(--border);
+ background:var(--card);color:var(--text);
+ padding:14px;border-radius:10px;outline:none;
+}
+.search button{background:var(--accent);color:#06221b}
+main{max-width:1200px;margin:auto;padding:15px 5%}
+section{padding:27px 0}
+.section-title{
+ font-size:25px;border-left:5px solid var(--accent);
+ padding-left:12px;margin-bottom:20px;
+}
+.grid{
+ display:grid;
+ grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+ gap:17px;
+}
+.card{
+ background:var(--card);border:1px solid var(--border);
+ border-radius:15px;overflow:hidden;
+ transition:transform .25s,border-color .25s;
+}
+.card:hover{transform:translateY(-5px);border-color:var(--accent)}
+.art{
+ min-height:145px;display:flex;align-items:center;
+ justify-content:center;font-size:65px;
+ background:linear-gradient(135deg,#163d64,#137b71);
+}
+.art.music{background:linear-gradient(135deg,#6134a5,#cf3d8d)}
+.art.movie{background:linear-gradient(135deg,#792e46,#d17d2a)}
+.art.video{background:linear-gradient(135deg,#2541a0,#11a9a5)}
+.content{padding:18px}
+.tag{font-size:11px;color:var(--accent);font-weight:800}
+.content h3{margin:8px 0;font-size:19px}
+.content p{color:var(--muted);font-size:14px}
+.content a{
+ display:inline-block;margin-top:9px;color:var(--accent);
+ font-weight:bold;
+}
+.banner{
+ background:linear-gradient(110deg,#114d54,#18336a);
+ padding:25px;border-radius:16px;
+}
+.links{display:flex;gap:10px;flex-wrap:wrap}
+.links a{
+ padding:11px 15px;border:1px solid var(--border);
+ border-radius:9px;background:var(--card);
+}
+.links a:hover{border-color:var(--accent)}
+.newsletter{
+ background:var(--card);border:1px solid var(--border);
+ border-radius:15px;padding:25px;text-align:center;
+}
+footer{
+ border-top:1px solid var(--border);
+ padding:28px 5%;text-align:center;color:var(--muted);
+}
+.whatsapp{
+ position:fixed;right:17px;bottom:20px;z-index:20;
+ background:#25d366;color:#082918;
+ padding:14px 18px;border-radius:40px;
+ font-weight:900;box-shadow:0 4px 22px #0006;
+}
+.hidden{display:none!important}
+#empty{display:none;color:var(--muted);text-align:center}
+@keyframes rise{
+ from{opacity:0;transform:translateY(20px)}
+ to{opacity:1;transform:translateY(0)}
+}
+@media(max-width:650px){
+ header{flex-wrap:wrap}
+ nav{order:3;width:100%;justify-content:center;gap:12px}
+ .logo{font-size:17px}
+ .hero{padding:45px 5%}
+ .section-title{font-size:22px}
+ .whatsapp{font-size:13px;padding:12px}
+}
+</style>
+</head>
+<body>
+
+<header>
+ <a class="logo" href="#">
+  AFRICATEC<span>-DROID</span>
+ </a>
+ <button class="theme" id="themeBtn" aria-label="Toggle theme">☀️</button>
+ <nav>
+  <a href="#home">Home</a>
+  <a href="#sports">Sports</a>
+  <a href="#entertainment">Entertainment</a>
+  <a href="#videos">Videos</a>
+  <a href="#contact">Contact</a>
+ </nav>
+</header>
+
+<div class="hero" id="home">
+ <h1>YOUR WORLD OF<br><span>SPORTS & ENTERTAINMENT</span></h1>
+ <p>Football, music, movies, videos and the stories that keep Africa connected.</p>
+ <a class="btn" href="#sports">Explore Sports ⚽</a>
+ <a class="btn outline" href="#entertainment">Entertainment 🎬</a>
+
+ <div class="search">
+  <input id="searchInput" type="search"
+   placeholder="Search football, music, movies..."
+   aria-label="Search website topics">
+  <button id="searchBtn">Search</button>
+ </div>
+</div>
+
+<main>
+<section id="sports">
+ <h2 class="section-title">⚽ Sports Zone</h2>
+ <div class="grid">
+
+  <article class="card searchable">
+   <div class="art">⚽</div>
+   <div class="content">
+    <span class="tag">FOOTBALL</span>
+    <h3>Premier League</h3>
+    <p>Follow English football fixtures, league standings and match updates.</p>
+    <a href="https://www.premierleague.com/" target="_blank" rel="noopener noreferrer">View Premier League ↗</a>
+   </div>
+  </article>
+
+  <article class="card searchable">
+   <div class="art">🏆</div>
+   <div class="content">
+    <span class="tag">CHAMPIONS LEAGUE</span>
+    <h3>European Football</h3>
+    <p>Explore UEFA Champions League fixtures, clubs and competition news.</p>
+    <a href="https://www.uefa.com/uefachampionsleague/" target="_blank" rel="noopener noreferrer">Explore UEFA ↗</a>
+   </div>
+  </article>
+
+  <article class="card searchable">
+   <div class="art">📊</div>
+   <div class="content">
+    <span class="tag">MATCH CENTRE</span>
+    <h3>Football Live Scores</h3>
+    <p>Open a dedicated football scores service for ongoing match results.</p>
+    <a href="https://www.flashscore.com/football/" target="_blank" rel="noopener noreferrer">Check Live Scores ↗</a>
+   </div>
+  </article>
+
+  <article class="card searchable">
+   <div class="art">🇰🇪</div>
+   <div class="content">
+    <span class="tag">KENYAN FOOTBALL</span>
+    <h3>Football Kenya</h3>
+    <p>Discover Kenyan football and updates from the national federation.</p>
+    <a href="https://footballkenya.org/" target="_blank" rel="noopener noreferrer">Kenyan Football ↗</a>
+   </div>
+  </article>
+
+ </div>
+</section>
+
+<section>
+ <div class="banner">
+  <h2>🔥 Football Match Centre</h2>
+  <p>Stay connected to match schedules, standings and results from around the world.</p>
+  <a class="btn" href="https://www.espn.com/soccer/scoreboard" target="_blank" rel="noopener noreferrer">Open Match Centre ↗</a>
+ </div>
+</section>
+
+<section id="entertainment">
+ <h2 class="section-title">🎬 Entertainment Hub</h2>
+ <div class="grid">
+
+  <article class="card searchable">
+   <div class="art music">🎵</div>
+   <div class="content">
+    <span class="tag">MUSIC</span>
+    <h3>Kenyan & African Music</h3>
+    <p>Discover music, artists and performances through YouTube.</p>
+    <a href="https://www.youtube.com/results?search_query=kenyan+music" target="_blank" rel="noopener noreferrer">Explore Music ↗</a>
+   </div>
+  </article>
+
+  <article class="card searchable">
+   <div class="art movie">🎬</div>
+   <div class="content">
+    <span class="tag">MOVIES</span>
+    <h3>Movies & Trailers</h3>
+    <p>Find movie trailers and discover upcoming film releases.</p>
+    <a href="https://www.youtube.com/results?search_query=official+movie+trailers" target="_blank" rel="noopener noreferrer">Watch Trailers ↗</a>
+   </div>
+  </article>
+
+  <article class="card searchable">
+   <div class="art music">🌟</div>
+   <div class="content">
+    <span class="tag">CELEBRITIES</span>
+    <h3>Celebrity Entertainment</h3>
+    <p>Explore interviews, performances and entertainment videos.</p>
+    <a href="https://www.youtube.com/results?search_query=african+celebrity+interviews" target="_blank" rel="noopener noreferrer">Explore Videos ↗</a>
+   </div>
+  </article>
+
+  <article class="card searchable">
+   <div class="art">🎮</div>
+   <div class="content">
+    <span class="tag">GAMING</span>
+    <h3>Football Gaming</h3>
+    <p>Watch football gaming highlights, tutorials and exciting matches.</p>
+    <a href="https://www.youtube.com/results?search_query=efootball+gameplay" target="_blank" rel="noopener noreferrer">Watch Gaming ↗</a>
+   </div>
+  </article>
+
+ </div>
+</section>
+
+<section id="videos">
+ <h2 class="section-title">📺 Video Zone</h2>
+ <div class="grid">
+  <article class="card searchable">
+   <div class="art video">▶️</div>
+   <div class="content">
+    <h3>Football Highlights</h3>
+    <p>Find football highlights and memorable goals.</p>
+    <a href="https://www.youtube.com/results?search_query=official+football+highlights" target="_blank" rel="noopener noreferrer">Watch on YouTube ↗</a>
+   </div>
+  </article>
+  <article class="card searchable">
+   <div class="art video">🎤</div>
+   <div class="content">
+    <h3>Music Performances</h3>
+    <p>Explore live performances from African artists.</p>
+    <a href="https://www.youtube.com/results?search_query=african+live+music+performances" target="_blank" rel="noopener noreferrer">Explore Performances ↗</a>
+   </div>
+  </article>
+ </div>
+</section>
+
+<section>
+ <h2 class="section-title">🌍 Quick Links</h2>
+ <div class="links">
+  <a href="https://www.fifa.com/" target="_blank" rel="noopener noreferrer">🌍 FIFA</a>
+  <a href="https://www.uefa.com/" target="_blank" rel="noopener noreferrer">🏆 UEFA</a>
+  <a href="https://www.premierleague.com/" target="_blank" rel="noopener noreferrer">⚽ Premier League</a>
+  <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer">▶️ YouTube</a>
+  <a href="https://www.bbc.com/sport" target="_blank" rel="noopener noreferrer">📰 BBC Sport</a>
+ </div>
+</section>
+
+<p id="empty">No matching topics found. Try another search.</p>
+
+<section id="contact">
+ <div class="newsletter">
+  <h2>📩 Contact AFRICATEC-DROID</h2>
+  <p>Have a story, suggestion, advertising inquiry or partnership proposal?</p>
+  <a class="btn" href="https://wa.me/254712846516?text=Hello%20AFRICATEC-DROID%2C%20I%20am%20contacting%20you%20from%20your%20website" target="_blank" rel="noopener noreferrer">
+   💬 Message on WhatsApp
+  </a>
+ </div>
+</section>
+</main>
+
+<footer>
+ <h3>AFRICATEC-DROID</h3>
+ <p>Sports • Entertainment • Music • Videos</p>
+ <p>© <span id="year"></span> AFRICATEC-DROID. All rights reserved.</p>
+ <p>Independent website. External links lead to third-party services.</p>
+</footer>
+
+<a class="whatsapp"
+ href="https://wa.me/254712846516?text=Hello%20AFRICATEC-DROID"
+ target="_blank" rel="noopener noreferrer"
+ aria-label="Contact AFRICATEC-DROID on WhatsApp">
+ 💬 WhatsApp
+</a>
+
+<script>
+document.getElementById("year").textContent =
+ new Date().getFullYear();
+
+const themeBtn = document.getElementById("themeBtn");
+
+themeBtn.addEventListener("click",()=>{
+ document.body.classList.toggle("light");
+ themeBtn.textContent =
+ document.body.classList.contains("light") ? "🌙" : "☀️";
+});
+
+const searchInput = document.getElementById("searchInput");
+const cards = document.querySelectorAll(".searchable");
+const empty = document.getElementById("empty");
+
+function searchSite(){
+ const query = searchInput.value.trim().toLowerCase();
+ let found = 0;
+
+ cards.forEach(card=>{
+  const matches = card.textContent.toLowerCase().includes(query);
+  card.classList.toggle("hidden",!matches);
+  if(matches) found++;
+ });
+
+ empty.style.display = found === 0 ? "block" : "none";
+
+ if(query){
+  const first = document.querySelector(".searchable:not(.hidden)");
+  if(first) first.scrollIntoView({behavior:"smooth",block:"center"});
+  else empty.scrollIntoView({behavior:"smooth"});
+ }
+}
+
+document.getElementById("searchBtn")
+ .addEventListener("click",searchSite);
+
+searchInput.addEventListener("input",()=>{
+ if(searchInput.value.trim()==="") searchSite();
+});
+
+searchInput.addEventListener("keydown",event=>{
+ if(event.key==="Enter") searchSite();
+});
+</script>
+
+</body>
+</html>
